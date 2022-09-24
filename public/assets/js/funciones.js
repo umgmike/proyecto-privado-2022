@@ -1,4 +1,4 @@
-var School_system = function () {
+var PRIVADO_2022 = function () {
     return {
         validacionGeneral: function (id, reglas, mensajes) {
             const formulario = $('#' + id);
@@ -30,7 +30,7 @@ var School_system = function () {
                     }
                 },
                 invalidHandler: function (event, validator) { //display error alert on form submit
-                    
+
                 },
                 submitHandler: function (form) {
                     return true;

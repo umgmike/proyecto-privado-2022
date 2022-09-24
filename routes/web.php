@@ -11,10 +11,20 @@
 |
 */
 
-Route::get('/', function () {
-return view('welcome');
-})->name('welcome');
+Route::get('/', function () { return view('welcome'); })->name('welcome');
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::group(['namespace' => 'AEROPUERTO_AURORA', 'middleware' => 'auth'], function () {
+    Route::get('logout', 'LoginController@logout')->name('logout');
+	Route::get('home', 'HomeController@HomeAdmin')->name('home')->middleware('auth');
+
+    /*********					apartado de alumnos    					*********/
+	Route::get('Usuarios', 'UsuarioController@getUsuarios')->name('page.usuarios')->middleware('auth');
+    Route::get('Usuarios/Crear', 'UsuarioController@crearUsuarios')->name('create.usuarios')->middleware('auth');
+	Route::post('Usuarios/Guardar', 'UsuarioController@grabarRegistro')->name('save.Usuarios')->middleware('auth');
+	Route::get('Usuarios/{id}/Editar', 'UsuarioController@editarRegistro')->name('edit.Usuarios')->middleware('auth');
+	Route::put('Usuarios/{id}', 'UsuarioController@updateRegistro')->name('update.Usuarios')->middleware('auth');
+	Route::delete('Usuarios/{id}', 'UsuarioController@desactivarUsuarios')->name('desactivar.Usuarios')->middleware('auth');
+	/*********					apartado de alumnos    					*********/
+});
