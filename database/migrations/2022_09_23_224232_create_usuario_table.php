@@ -21,6 +21,10 @@ class CreateUsuarioTable extends Migration
             $table->string('usuario')->unique();
             $table->string('password');
             $table->boolean('estado')->default(1);
+            $table->unsignedInteger('id_genero');
+            $table->foreign('id_genero','fk_genero_usuario')->references('id')->on('genero');
+            $table->unsignedInteger('id_rol');
+            $table->foreign('id_rol','fk_rol_usuario')->references('id')->on('rol');
             $table->rememberToken();
             $table->timestamps();
         });
