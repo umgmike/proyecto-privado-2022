@@ -4,7 +4,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>@yield('Title','Welcome') | E.O.U.M No. 72 "Guatemaltecos Somos" </title>
+        <title>@yield('Title','Welcome') | Aeropuerto LA AURORA" </title>
         <link rel="icon" href="{{ asset('uza/img/core-img/favicon.ICO') }} ">
 
         <link rel="stylesheet" href="{{ asset('uza/style.css') }} ">
@@ -39,7 +39,7 @@
                                                     <strong>"{{ Auth::user()->nombre }} {{ Auth::user()->apellido }}"</strong>
                                                 </h5>
                                             @else
-                                                <h5 >AEREOPUERTO "LA AURORA"</h5>
+                                                <h5 >AEROPUERTO "LA AURORA"</h5>
                                             @endauth
                                         @endif
                                         @if (Route::has('login'))
@@ -54,7 +54,7 @@
                                 <!-- Welcome Thumbnail -->
                                 <div class="col-12 col-md-6">
                                     <div class="welcome-thumbnail">
-                                        <img src="{{ asset('uza/img/bg-img/bienvenida.png') }} " alt="" data-animation="slideInRight" data-delay="400ms">
+                                        <img src="{{ asset('uza/img/bg-img/bienvenida.PNG') }} " alt="" data-animation="slideInRight" data-delay="400ms">
                                     </div>
                                 </div>
                             </div>

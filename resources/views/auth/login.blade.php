@@ -4,7 +4,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>EOUM No. 72 "Guatemaltecos Somos"</title>
+        <title>Aeropuerto LA AURORA</title>
         <link rel="icon" href="{{ asset('uza/img/core-img/favicon.ico') }} ">
 
         <link rel="stylesheet" href="{{ asset('uza/style.css') }} ">
@@ -26,8 +26,8 @@
                 <div class="col-md-7">
                     <div class="card">
                         <div class="single-blog-post">
-                            <div class="card-header" style="font-size: 20px; color:#DFDEDE">
-                                <img src="{{ asset("uza/img/core-img/logo.ico") }}" alt="">
+                            <div class="card-header" style="font-size: 20px; color:#DFDEDE; background: white">
+                                <img src="{{ asset("uza/img/core-img/logoEsteban.ico") }}" alt="">
                                 <div class="text-center">
                                     <b><p>Control de acceso</p></b>
                                 </div>

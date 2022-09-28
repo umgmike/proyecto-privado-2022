@@ -6,7 +6,7 @@
                 <nav class="classy-navbar justify-content-between" id="uzaNav">
 
                     <!-- Logo -->
-                    <a class="nav-brand" href="{{ route('welcome') }}"><img src=" {{ asset("uza/img/core-img/logo1.ico") }} " alt=""></a>
+                    <a class="nav-brand" href="{{ route('welcome') }}"><img src=" {{ asset("uza/img/core-img/logoInicial.ico") }} " alt=""></a>
 
                     <!-- Navbar Toggler -->
                     <div class="classy-navbar-toggler">

@@ -55,6 +55,13 @@
             </a>
           </li>
 
+          <li class="nav-item">
+            <a href="{{ route('page.Pasajeros') }}" class="nav-link">
+              <i class="nav-icon fas fa-users"></i>
+              <p>Pasajeros</p>
+            </a>
+          </li>
+
         </ul>
       </nav>
       <!-- /.sidebar-menu -->

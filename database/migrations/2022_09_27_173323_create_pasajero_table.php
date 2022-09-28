@@ -22,6 +22,7 @@ class CreatePasajeroTable extends Migration
             $table->integer('edad');
             $table->unsignedInteger('id_genero');
             $table->foreign('id_genero','fk_genero_pasajero')->references('id')->on('genero');
+            $table->boolean('estado')->default(1);
             $table->timestamps();
         });
     }
