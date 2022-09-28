@@ -104,10 +104,10 @@ class UsuarioController extends Controller
     public function desactivarUsuarios(Request $request, $id)
     {
         if ($request->ajax()) {
-            if ($usu = Usuario::findOrFail($id)) {
-                $usu->estado = $usu->estado ? '0' : '1';
-                $usu->update();
-                toast('Estado Usuario cambiado con éxito','info')->timerProgressBar()->autoClose(4800);
+            if ($usuarios = Usuario::findOrFail($id)) {
+                $usuarios->estado = $usuarios->estado ? '0' : '1';
+                $usuarios->update();
+                toast('Estado de : '.$usuarios->nombre.' '. 'cambiada con éxito','info')->timerProgressBar()->autoClose(4800);
                 return response()->json(['mensaje' => 'ok']);
             } else {
                 return response()->json(['mensaje' => 'ng']);

@@ -21,10 +21,10 @@ Route::group(['namespace' => 'AEROPUERTO_AURORA', 'middleware' => 'auth'], funct
 
     /*********					apartado de alumnos    					*********/
 	Route::get('Usuarios', 'UsuarioController@getUsuarios')->name('page.usuarios')->middleware('auth');
-    Route::get('Usuarios/Crear', 'UsuarioController@crearUsuarios')->name('create.usuarios')->middleware('auth');
-	Route::post('Usuarios/Guardar', 'UsuarioController@grabarRegistro')->name('save.Usuarios')->middleware('auth');
-	Route::get('Usuarios/{id}/Editar', 'UsuarioController@editarRegistro')->name('edit.Usuarios')->middleware('auth');
-	Route::put('Usuarios/{id}', 'UsuarioController@updateRegistro')->name('update.Usuarios')->middleware('auth');
-	Route::delete('Usuarios/{id}', 'UsuarioController@desactivarUsuarios')->name('desactivar.Usuarios')->middleware('auth');
+    Route::get('Usuarios/Crear', 'UsuarioController@crearUsuarios')->name('page.create.usuarios')->middleware('auth');
+	Route::post('Usuarios/Guardar', 'UsuarioController@grabarRegistro')->name('page.save.Usuarios')->middleware('auth');
+	Route::get('Usuarios/{id}/Editar', 'UsuarioController@editarRegistro')->name('page.edit.Usuarios')->middleware('auth');
+	Route::put('Usuarios/{id}', 'UsuarioController@updateRegistro')->name('page.update.Usuarios')->middleware('auth');
+	Route::delete('Usuarios/{id}', 'UsuarioController@desactivarUsuarios')->name('page.desactivar.Usuarios')->middleware('auth');
 	/*********					apartado de alumnos    					*********/
 });
