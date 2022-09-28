@@ -27,7 +27,8 @@ class PasajerosController extends Controller
             p.telefono,
             p.dpi,
             p.edad,
-            g.genero
+            g.genero,
+            p.estado
         FROM pasajero p
         INNER JOIN genero g ON (p.id_genero = g.id)';
 
@@ -76,25 +77,16 @@ class PasajerosController extends Controller
     }
 
     /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
      * Show the form for editing the specified resource.
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function editarRegistro($id)
     {
-        //
+        $data['registro'] = Pasajero::findOrFail($id);
+        $data['listadoGenero'] = Genero::all();
+        return view('theme.pages.mantenimiento.pasajeros.edit', $data);
     }
 
     /**
@@ -104,9 +96,26 @@ class PasajerosController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function updateRegistro(Request $request, $id)
     {
-        //
+        DB::beginTransaction();
+        try
+        {
+            $registro = Pasajero::findOrFail($id);
+            $registro->nombre = $request->nombre;
+            $registro->apellido = $request->apellido;
+            $registro->telefono = $request->telefono;
+            $registro->dpi = $request->dpi;
+            $registro->edad = $request->edad;
+            $registro->id_genero = $request->id_genero;
+            $registro->save();
+            DB::commit();
+            toast('El pasajero : '.$registro->nombre.' '.$registro->apellido.' '. 'Se actualizó con éxito','info')->timerProgressBar()->autoClose(4500);
+            return redirect()->action([PasajerosController::class, 'getPasajeros']);
+        } catch (\Exception $e) {
+          DB::rollback();
+          toast('El pasajero : '.$registro->nombre.' '.$registro->apellido.' '. 'No se pudo actualizar' . $e . ' ','error')->timerProgressBar()->autoClose(4500);
+        }
     }
 
     /**
@@ -115,8 +124,19 @@ class PasajerosController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function desactivarPasajeros(Request $request, $id)
     {
-        //
+        if ($request->ajax()) {
+            if ($registro = Pasajero::findOrFail($id)) {
+                $registro->estado = $registro->estado ? '0' : '1';
+                $registro->update();
+                toast('Estado de : '.$registro->nombre.' '. 'cambiada con éxito','info')->timerProgressBar()->autoClose(4800);
+                return response()->json(['mensaje' => 'ok']);
+            } else {
+                return response()->json(['mensaje' => 'ng']);
+            }
+        } else {
+            abort(404);
+        }
     }
 }

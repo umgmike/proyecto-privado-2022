@@ -26,7 +26,7 @@ $(document).ready(function () {
                 if (respuesta.mensaje == "ok") {
                     location.reload();
                 } else {
-                    Biblioteca.notificaciones('El registro no pudo ser Desactivado, hay recursos usandolo', 'Johhan', 'error');
+                    PRIVADO_2022.notificaciones('El registro no pudo ser Desactivado, hay recursos usandolo', 'Johhan', 'error');
                 }
             },
             error: function () {

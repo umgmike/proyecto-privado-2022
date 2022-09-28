@@ -81,6 +81,8 @@
       <!-- fin footer -->
     </div>
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.11.3/jquery.min.js" integrity="sha512-ju6u+4bPX50JQmgU97YOGAXmRMrD9as4LE05PdC3qycsGQmjGlfm041azyB1VfCXpkpt1i9gqXCT6XuxhBJtKg==" crossorigin="anonymous"></script>
+
     <!-- jQuery -->
     <script src="{{ asset("assets/$theme/plugins/jquery/jquery.min.js") }} "></script>
     <!-- Bootstrap 4 -->
@@ -121,16 +123,17 @@
     <!-- AdminLTE App -->
     <script src="{{ asset("assets/$theme/dist/js/adminlte.min.js") }} "></script>
 
+    @include('sweetalert::alert', ['cdn' => "https://cdn.jsdelivr.net/npm/sweetalert2@9"])
+
     @yield("scriptsPlugins")
-    <script src="{{asset("assets/js/jquery-validation/jquery.validate.min.js")}}"></script>
-    <script src="{{asset("assets/js/jquery-validation/localization/messages_es.min.js")}}"></script>
+    <script src="{{ asset('assets/lte/plugins/jquery-validation/jquery.validate.min.js') }}"></script>
+    <script src="{{ asset('assets/lte/plugins/jquery-validation/additional-methods.min.js') }}"></script>
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
-    <script src="{{asset("assets/js/scripts.js")}}"></script>
-    <script src="{{asset("assets/js/funciones.js")}}"></script>
+    <script src="{{ asset("assets/js/scripts.js")}}"></script>
+    <script src="{{ asset("assets/js/funciones.js")}}"></script>
     @yield("scripts")
 
-    @include('sweetalert::alert', ['cdn' => "https://cdn.jsdelivr.net/npm/sweetalert2@9"])
 
     <script>
       $(function () {
@@ -223,64 +226,7 @@
         $(this).bootstrapSwitch('state', $(this).prop('checked'));
       })
 
-    })
-    // BS-Stepper Init
-    document.addEventListener('DOMContentLoaded', function () {
-      window.stepper = new Stepper(document.querySelector('.bs-stepper'))
-    })
-
-    // DropzoneJS Demo Code Start
-    Dropzone.autoDiscover = false
-
-    // Get the template HTML and remove it from the doumenthe template HTML and remove it from the doument
-    var previewNode = document.querySelector("#template")
-    previewNode.id = ""
-    var previewTemplate = previewNode.parentNode.innerHTML
-    previewNode.parentNode.removeChild(previewNode)
-
-    var myDropzone = new Dropzone(document.body, { // Make the whole body a dropzone
-      url: "/target-url", // Set the url
-      thumbnailWidth: 80,
-      thumbnailHeight: 80,
-      parallelUploads: 20,
-      previewTemplate: previewTemplate,
-      autoQueue: false, // Make sure the files aren't queued until manually added
-      previewsContainer: "#previews", // Define the container to display the previews
-      clickable: ".fileinput-button" // Define the element that should be used as click trigger to select files.
-    })
-
-    myDropzone.on("addedfile", function(file) {
-      // Hookup the start button
-      file.previewElement.querySelector(".start").onclick = function() { myDropzone.enqueueFile(file) }
-    })
-
-    // Update the total progress bar
-    myDropzone.on("totaluploadprogress", function(progress) {
-      document.querySelector("#total-progress .progress-bar").style.width = progress + "%"
-    })
-
-    myDropzone.on("sending", function(file) {
-      // Show the total progress bar when upload starts
-      document.querySelector("#total-progress").style.opacity = "1"
-      // And disable the start button
-      file.previewElement.querySelector(".start").setAttribute("disabled", "disabled")
-    })
-
-    // Hide the total progress bar when nothing's uploading anymore
-    myDropzone.on("queuecomplete", function(progress) {
-      document.querySelector("#total-progress").style.opacity = "0"
-    })
-
-    // Setup the buttons for all transfers
-    // The "add files" button doesn't need to be setup because the config
-    // `clickable` has already been specified.
-    document.querySelector("#actions .start").onclick = function() {
-      myDropzone.enqueueFiles(myDropzone.getFilesWithStatus(Dropzone.ADDED))
-    }
-    document.querySelector("#actions .cancel").onclick = function() {
-      myDropzone.removeAllFiles(true)
-    }
-    // DropzoneJS Demo Code End
+    });
   </script>
 
   </body>
