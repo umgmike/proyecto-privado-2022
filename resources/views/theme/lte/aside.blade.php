@@ -39,28 +39,30 @@
       <nav class="mt-2">
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
 
-          <li class="nav-item">
-            <a href="{{ route('home') }}" class="nav-link">
-              <i class="nav-icon fas fa-tachometer-alt"></i>
-              <p>Dashboard</p>
-            </a>
-          </li>
+            @if ((Auth::user()->id_rol) === 1)
+                <li class="nav-item">
+                    <a href="{{ route('home') }}" class="nav-link">
+                    <i class="nav-icon fas fa-tachometer-alt"></i>
+                    <p>Dashboard</p>
+                    </a>
+                </li>
 
-          <li class="nav-header">MENU</li>
+                <li class="nav-header">MENU</li>
 
-          <li class="nav-item">
-            <a href="{{ route('page.usuarios') }}" class="nav-link">
-              <i class="nav-icon fas fa-user"></i>
-              <p>Usuarios</p>
-            </a>
-          </li>
+                <li class="nav-item">
+                    <a href="{{ route('page.usuarios') }}" class="nav-link">
+                    <i class="nav-icon fas fa-user"></i>
+                    <p>Usuarios</p>
+                    </a>
+                </li>
 
-          <li class="nav-item">
-            <a href="{{ route('page.Pasajeros') }}" class="nav-link">
-              <i class="nav-icon fas fa-users"></i>
-              <p>Pasajeros</p>
-            </a>
-          </li>
+                <li class="nav-item">
+                    <a href="{{ route('page.Pasajeros') }}" class="nav-link">
+                    <i class="nav-icon fas fa-users"></i>
+                    <p>Pasajeros</p>
+                    </a>
+                </li>
+            @endif
 
         </ul>
       </nav>

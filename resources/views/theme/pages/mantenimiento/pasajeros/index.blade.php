@@ -61,11 +61,11 @@
                         <td>{{ $p->genero }}</td>
                         <td>
                             @if($p->estado == 1)
-                              <button class="btn btn-info btn-xs tooltipsC" title="Registro Asignado">
+                              <button class="btn btn-info btn-sm tooltipsC" title="Registro Asignado">
                                 <i class="fa fa-check-circle-o"> Activo </i>
                               </button>
                             @elseif($p->estado == 0)
-                              <button class="btn btn-danger btn-xs  tooltipsC" title="Registro No Asignado">
+                              <button class="btn btn-danger btn-sm  tooltipsC" title="Registro No Asignado">
                                 <i class="fa fa-times-circle-o"> Inactivo </i>
                               </button>
                             @endif

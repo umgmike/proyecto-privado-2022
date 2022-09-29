@@ -4,8 +4,11 @@ namespace App\Http\Controllers\AEROPUERTO_AURORA;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+
 use App\Models\Pasajero;
 use App\Models\Genero;
+
+use App\Http\Requests\PasajeroValidate;
 
 use DB;
 use Alert;
@@ -54,7 +57,7 @@ class PasajerosController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function grabarRegistro(Request $request)
+    public function grabarRegistro(PasajeroValidate $request)
     {
         DB::beginTransaction();
         try

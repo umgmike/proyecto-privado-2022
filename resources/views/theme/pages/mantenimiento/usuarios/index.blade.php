@@ -61,11 +61,11 @@
                         <td>{{ $u->rol }}</td>
                         <td>
                             @if($u->estado == 1)
-                                <button type="submit" class="btn btn-outline-info btn-sm tooltipsC" title="registrada">
+                                <button type="submit" class="btn btn-info btn-sm tooltipsC" title="registrada">
                                     <i class="fa fa-check-circle-o"> Activo </i>
                                 </button>
                                 @elseif($u->estado == 0)
-                                <button type="submit" class="btn btn-outline-danger btn-sm  tooltipsC" title="anulada">
+                                <button type="submit" class="btn btn-danger btn-sm  tooltipsC" title="anulada">
                                     <i class="fa fa-times-circle-o"> Inactivo</i>
                                 </button>
                             @endif

@@ -17,7 +17,7 @@ class CreatePasajeroTable extends Migration
             $table->increments('id');
             $table->string('nombre');
             $table->string('apellido');
-            $table->string('telefono');
+            $table->string('telefono', 9)->unique();
             $table->string('dpi', 15)->unique();
             $table->integer('edad');
             $table->unsignedInteger('id_genero');

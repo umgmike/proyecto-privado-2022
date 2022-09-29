@@ -33,7 +33,6 @@ class UsuarioController extends Controller
                 FROM usuario u
                 INNER JOIN genero g ON (u.id_genero = g.id)
                 INNER JOIN rol r ON (u.id_rol = r.id)
-                WHERE u.estado = 1
                 ORDER BY u.id ASC';
         $usuarios = DB::select($sql);
 
