@@ -17,8 +17,14 @@ class CreateBoletoTable extends Migration
             $table->increments('id');
             $table->unsignedInteger('id_pasajero');
             $table->foreign('id_pasajero','fk_boleto_pasajero')->references('id')->on('pasajero');
-            $table->string('ticket')->unique();
-            $table->date('fecha_registro');
+            $table->string('ticket')->unique()->nullable();
+            $table->unsignedInteger('id_clase');
+            $table->foreign('id_clase','fk_boleto_clase')->references('id')->on('clase');
+            $table->integer('cantidad');
+            $table->decimal('precio', 18,2);
+            $table->decimal('total', 18,2);
+            $table->boolean('estado')->default(1);
+            $table->text('motivo');
             $table->timestamps();
         });
     }

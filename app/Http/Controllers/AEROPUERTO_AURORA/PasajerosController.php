@@ -15,6 +15,11 @@ use Alert;
 
 class PasajerosController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     /**
      * Display a listing of the resource.
      *
@@ -25,15 +30,15 @@ class PasajerosController extends Controller
 
         $sql = '
             SELECT
-            p.id,
-            CONCAT(p.nombre, " ", p.apellido) AS nombre_completo,
-            p.telefono,
-            p.dpi,
-            p.edad,
-            g.genero,
-            p.estado
-        FROM pasajero p
-        INNER JOIN genero g ON (p.id_genero = g.id)';
+                p.id,
+                CONCAT(p.nombre, " ", p.apellido) AS nombre_completo,
+                p.telefono,
+                p.dpi,
+                p.edad,
+                g.genero,
+                p.estado
+            FROM pasajero p
+            INNER JOIN genero g ON (p.id_genero = g.id)';
 
         $pasajeros = DB::select($sql);
 

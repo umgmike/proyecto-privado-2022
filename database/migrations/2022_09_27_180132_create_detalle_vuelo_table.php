@@ -21,8 +21,6 @@ class CreateDetalleVueloTable extends Migration
             $table->foreign('id_pais_destino','fk_detalle_vuelo_pais_destino')->references('id')->on('pais');
             $table->unsignedInteger('id_ciudad_destino');
             $table->foreign('id_ciudad_destino','fk_detalle_vuelo_ciudad_destino')->references('id')->on('departamento');
-            $table->unsignedInteger('id_clase');
-            $table->foreign('id_clase','fk_detalle_vuelo_clase')->references('id')->on('clase');
             $table->unsignedInteger('id_vuelo');
             $table->foreign('id_vuelo','fk_detalle_vuelo_vuelo')->references('id')->on('vuelo');
             $table->unsignedInteger('id_aereopuerto');
@@ -34,6 +32,7 @@ class CreateDetalleVueloTable extends Migration
             $table->text('motivo_vuelo');
             $table->unsignedInteger('id_avion');
             $table->foreign('id_avion','fk_detalle_vuelo_avion')->references('id')->on('avion');
+            $table->string('estado');
             $table->timestamps();
         });
     }

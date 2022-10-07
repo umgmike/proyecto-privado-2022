@@ -62,6 +62,48 @@
                     <p>Pasajeros</p>
                     </a>
                 </li>
+
+                <li class="nav-header">CONTROL DE VUELOS</li>
+
+                <li class="nav-item">
+                    <a href="" class="nav-link">
+                        <i class="nav-icon fa fa-solid fa-school"></i>
+                        <p>Reservaciones <i class="right fas fa-angle-left"></i> </p>
+                    </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+
+                            <a href=" {{ route('page.boleto') }} " class="nav-link">
+                                <i class="nav-icon fa fa-closed-captioning"></i>
+                                <p> Boleto </p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href=" " class="nav-link">
+                                <i class="nav-icon fa fa-solid fa-closed-captioning"></i>
+                                <p> Aeropuerto </p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href=" " class="nav-link">
+                                <i class="nav-icon fa fa-solid fa-closed-captioning"></i>
+                                <p> Clase </p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href=" " class="nav-link">
+                                <i class="nav-icon fa fa-solid fa-closed-captioning"></i>
+                                <p> Avión </p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href=" " class="nav-link">
+                                <i class="nav-icon fa fa-solid fa-closed-captioning"></i>
+                                <p> Vuelo </p>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
             @endif
 
         </ul>

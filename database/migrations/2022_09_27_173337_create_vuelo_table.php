@@ -20,7 +20,6 @@ class CreateVueloTable extends Migration
             $table->string('descripcion');
             $table->unsignedInteger('id_boleto');
             $table->foreign('id_boleto','fk_vuelo_boleto')->references('id')->on('boleto');
-            $table->string('estado');
             $table->timestamps();
         });
     }
