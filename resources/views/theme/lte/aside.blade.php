@@ -79,27 +79,9 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href=" " class="nav-link">
+                            <a href=" {{ route('page.Aviones') }}  " class="nav-link">
                                 <i class="nav-icon fa fa-solid fa-closed-captioning"></i>
-                                <p> Aeropuerto </p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href=" " class="nav-link">
-                                <i class="nav-icon fa fa-solid fa-closed-captioning"></i>
-                                <p> Clase </p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href=" " class="nav-link">
-                                <i class="nav-icon fa fa-solid fa-closed-captioning"></i>
-                                <p> Avión </p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href=" " class="nav-link">
-                                <i class="nav-icon fa fa-solid fa-closed-captioning"></i>
-                                <p> Vuelo </p>
+                                <p> Aviones </p>
                             </a>
                         </li>
                     </ul>

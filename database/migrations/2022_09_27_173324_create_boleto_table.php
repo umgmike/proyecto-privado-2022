@@ -25,6 +25,13 @@ class CreateBoletoTable extends Migration
             $table->decimal('total', 18,2);
             $table->boolean('estado')->default(1);
             $table->text('motivo');
+            $table->unsignedInteger('id_pais_origen');
+            $table->foreign('id_pais_origen','fk_boleto_pais_origen')->references('id')->on('pais');
+            $table->unsignedInteger('id_pais_destino');
+            $table->foreign('id_pais_destino','fk_boleto_pais_destino')->references('id')->on('pais');
+            $table->unsignedInteger('id_ciudad_destino');
+            $table->foreign('id_ciudad_destino','fk_boleto_ciudad_destino')->references('id')->on('departamento');
+            $table->text('direccion');
             $table->timestamps();
         });
     }

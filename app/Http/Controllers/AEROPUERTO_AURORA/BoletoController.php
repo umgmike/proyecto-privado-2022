@@ -8,6 +8,9 @@ use App\Http\Controllers\Controller;
 use App\Models\Boleto;
 use App\Models\Clase;
 use App\Models\Pasajero;
+use App\Models\Pais;
+use App\Models\Departamento;
+
 
 use DB;
 use Alert;
@@ -15,6 +18,11 @@ use Carbon\Carbon;
 
 class BoletoController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     /**
      * Display a listing of the resource.
      *
@@ -32,10 +40,17 @@ class BoletoController extends Controller
                 b.precio,
                 b.total,
                 b.estado,
-                b.motivo
+                b.motivo,
+                pa.pais AS pais_origen,
+                pd.pais AS pais_destino,
+                d.nombre,
+                b.direccion
             FROM boleto b
             INNER JOIN pasajero p ON (b.id_pasajero = p.id)
-            INNER JOIN clase c ON (b.id_clase = c.id)';
+            INNER JOIN clase c ON (b.id_clase = c.id)
+            INNER JOIN pais pa ON (b.id_pais_origen = pa.id)
+            INNER JOIN pais pd ON (b.id_pais_destino = pd.id)
+            INNER JOIN departamento d ON (b.id_ciudad_destino = d.id)';
 
         $boletos = DB::select($sql);
 
@@ -52,7 +67,17 @@ class BoletoController extends Controller
         $clase = Clase::all();
         $pasajero = Pasajero::all();
         $rel_ticket = Boleto::all();
-        return view('theme.pages.mantenimiento.reservaciones.boletos.generarBoleto', compact('clase', 'pasajero', 'rel_ticket'));
+        $pais = Pais::all();
+        $sql = '
+            SELECT
+                p.id,
+                p.pais
+            FROM pais p
+            WHERE p.id = 8';
+        $pais_destino = DB::select($sql);
+
+        $depto = Departamento::all();
+        return view('theme.pages.mantenimiento.reservaciones.boletos.generarBoleto', compact('clase', 'pasajero', 'rel_ticket', 'pais', 'depto', 'pais_destino'));
     }
 
     /**

@@ -51,7 +51,7 @@
 
                                             <div class="form-group">
                                                 <label for="id_pasajero">Seleccione pasajero : </label>
-                                                <select id="id_pasajero" name="id_pasajero" name="id_pasajero" class="form-control">
+                                                <select id="id_pasajero" name="id_pasajero" class="form-control">
                                                     @if (count($pasajero))
                                                         @foreach($pasajero as $item)
                                                             <option value="{{$item->id}}">{{ $item->nombre }} {{ $item->apellido }}</option>
@@ -64,7 +64,7 @@
 
                                             <div class="form-group">
                                                 <label for="id_clase">Seleccione clase para vuelo : </label>
-                                                <select id="id_clase" name="id_clase" name="id_clase" class="form-control" onchange="ShowSelected(this.value);">
+                                                <select id="id_clase" name="id_clase" class="form-control" onchange="ShowSelected(this.value);">
                                                 @if (count($clase))
                                                     @foreach($clase as $item)
                                                         <option value="{{$item->id}}">{{ $item->clase }}</option>
@@ -100,6 +100,51 @@
                                             <div class="form-group">
                                                 <label for="total">Total : </label>
                                                 <input type="number" id="total" name="total" class="form-control" readonly>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label for="id_pais_origen">Seleccione pais origen : </label>
+                                                <select id="id_pais_origen" name="id_pais_origen" class="form-control">
+                                                    @if (count($pais))
+                                                        @foreach($pais as $item)
+                                                            <option value="{{$item->id}}">{{ $item->pais }}</option>
+                                                        @endforeach
+                                                    @elseif ($pais != '')
+                                                        <option value="">No se encuentró ningún registro</option>
+                                                    @endif
+                                                </select>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label for="id_pais_destino">Seleccione pais destino : </label>
+                                                <select id="id_pais_destino"name="id_pais_destino" class="form-control">
+                                                    @if (count($pais_destino))
+                                                        @foreach($pais_destino as $item)
+                                                            <option value="{{$item->id}}">{{ $item->pais }}</option>
+                                                        @endforeach
+                                                    @elseif ($pais_destino != '')
+                                                        <option value="">No se encuentró ningún registro</option>
+                                                    @endif
+                                                </select>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label for="id_ciudad_destino">Seleccione ciudad : </label>
+                                                <select id="id_ciudad_destino" name="id_ciudad_destino" class="form-control">
+                                                    @if (count($depto))
+                                                        @foreach($depto as $item)
+                                                            <option value="{{$item->id}}">{{ $item->nombre }}</option>
+                                                        @endforeach
+                                                    @elseif ($depto != '')
+                                                        <option value="">No se encuentró ningún registro</option>
+                                                    @endif
+                                                </select>
+                                            </div>
+
+
+                                            <div class="form-group">
+                                                <label for="direccion">Direccion destino: </label>
+                                                <textarea name="direccion" id="direccion" class="form-control" rows="3"></textarea>
                                             </div>
 
                                             <div class="form-group">

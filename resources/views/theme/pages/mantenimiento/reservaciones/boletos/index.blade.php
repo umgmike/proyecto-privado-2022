@@ -48,6 +48,10 @@
                             <th>Cantidad</th>
                             <th>Precio</th>
                             <th>Total</th>
+                            <th>Pais Origen</th>
+                            <th>País Destino</th>
+                            <th>Depto</th>
+                            <th>Direccion</th>
                             <th>Estado</th>
                             <th>Acción</th>
                         </tr>
@@ -61,6 +65,10 @@
                                 <td>{{ $b->cantidad }}</td>
                                 <td>{{ $b->precio }}</td>
                                 <td>{{ number_format($b->total,2) }}</td>
+                                <td>{{ $b->pais_origen }}</td>
+                                <td>{{ $b->pais_destino }}</td>
+                                <td>{{ $b->nombre }}</td>
+                                <td>{{ $b->direccion }}</td>
                                 <td>
                                     @if($b->estado == 1)
                                     <button class="btn btn-info btn-sm tooltipsC" title="Registro Asignado">

@@ -17,8 +17,10 @@ class CreateAvionTable extends Migration
             $table->increments('id');
             $table->string('codigo')->unique();
             $table->string('nombre_avion');
-            $table->string('empresa');
+            $table->unsignedInteger('id_empresa');
+            $table->foreign('id_empresa','fk_avion_empresa')->references('id')->on('empresa');
             $table->integer('capacidad');
+            $table->string('estado_vuelo');
             $table->timestamps();
         });
     }
