@@ -28,6 +28,17 @@ Route::group(['namespace' => 'AEROPUERTO_AURORA', 'middleware' => 'auth'], funct
 	Route::delete('Usuarios/{id}', 'UsuarioController@desactivarUsuarios')->name('page.desactivar.Usuarios')->middleware('auth');
 	/*********					apartado de usuarios    					*********/
 
+
+    /*********					apartado de Roles    					*********/
+	Route::get('Roles', 'RolController@getRoles')->name('page.roles')->middleware('auth');
+    Route::get('Roles/Crear', 'RolController@crearRoles')->name('page.create.roles')->middleware('auth');
+	Route::post('Roles/Guardar', 'RolController@grabarRegistro')->name('page.save.roles')->middleware('auth');
+	Route::get('Roles/{id}/Editar', 'RolController@editarRegistro')->name('page.edit.roles')->middleware('auth');
+	Route::put('Roles/{id}', 'RolController@updateRegistro')->name('page.update.roles')->middleware('auth');
+    Route::delete('Roles/{id}', 'RolController@desactivarRol')->name('page.desactivar.Rol')->middleware('auth');
+	/*********					apartado de Roles    					*********/
+
+
     /*********					apartado de pasajeros    					*********/
 	Route::get('Pasajeros', 'PasajerosController@getPasajeros')->name('page.Pasajeros')->middleware('auth');
     Route::get('Pasajeros/Crear', 'PasajerosController@crearPasajeros')->name('page.create.Pasajeros')->middleware('auth');
@@ -38,14 +49,13 @@ Route::group(['namespace' => 'AEROPUERTO_AURORA', 'middleware' => 'auth'], funct
 	/*********					apartado de pasajeros    					*********/
 
 
+
     /*********					apartado de Boleto    					*********/
 	Route::get('Boleto', 'BoletoController@getBoleto')->name('page.boleto')->middleware('auth');
-    Route::get('Boleto/Crear', 'BoletoController@crearBoleto')->name('page.create.boleto')->middleware('auth');
-	Route::post('Boleto/Guardar', 'BoletoController@grabarRegistro')->name('page.save.boleto')->middleware('auth');
 	Route::get('Boleto/{id}/Editar', 'BoletoController@editarRegistro')->name('page.edit.boleto')->middleware('auth');
 	Route::put('Boleto/{id}', 'BoletoController@updateRegistro')->name('page.update.boleto')->middleware('auth');
 	Route::delete('Boleto/{id}', 'BoletoController@desactivarBoleto')->name('page.desactivar.boleto')->middleware('auth');
-	/*********					apartado de Boleto    					*********/
+	/*********					apartado de Boleto
 
 
     /*********					apartado de Boleto    					*********/
@@ -64,11 +74,10 @@ Route::group(['namespace' => 'AEROPUERTO_AURORA', 'middleware' => 'auth'], funct
 	Route::post('Aviones/Guardar', 'AvionesController@grabarRegistro')->name('page.save.Aviones')->middleware('auth');
 	Route::get('Aviones/{id}/Editar', 'AvionesController@editarRegistro')->name('page.edit.Aviones')->middleware('auth');
 	Route::put('Aviones/{id}', 'AvionesController@updateRegistro')->name('page.update.Aviones')->middleware('auth');
-
-
     Route::get('Aviones/{id}/Editar2', 'AvionesController@editarRegistroAvion')->name('page.edit.Aviones.temp')->middleware('auth');
 	Route::put('Aviones/{id}', 'AvionesController@updateRegistroAvion')->name('page.update.Aviones.temp')->middleware('auth');
     Route::delete('Aviones/{id}', 'AvionesController@activarAviones')->name('page.activar.Aviones')->middleware('auth');
     Route::delete('Aviones/{id}/EE', 'AvionesController@activarAvionesEnEspera')->name('page.activar.Aviones.espera')->middleware('auth');
+    Route::post('Aviones/Guardar/Bolotes', 'AvionesController@grabarRegistroAviones')->name('page.save.Aviones.save')->middleware('auth');
 	/*********					apartado de Aviones    					*********/
 });

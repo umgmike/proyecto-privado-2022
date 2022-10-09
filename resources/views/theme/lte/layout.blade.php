@@ -118,8 +118,6 @@
     <script src="{{ asset("assets/$theme/plugins/bootstrap-switch/js/bootstrap-switch.min.js") }} "></script>
     <!-- BS-Stepper -->
     <script src="{{ asset("assets/$theme/plugins/bs-stepper/js/bs-stepper.min.js") }} "></script>
-    <!-- dropzonejs -->
-    <script src="{{ asset("assets/$theme/plugins/dropzone/min/dropzone.min.js") }} "></script>
     <!-- AdminLTE App -->
     <script src="{{ asset("assets/$theme/dist/js/adminlte.min.js") }} "></script>
 
@@ -133,7 +131,6 @@
     <script src="{{ asset("assets/js/scripts.js")}}"></script>
     <script src="{{ asset("assets/js/funciones.js")}}"></script>
     @yield("scripts")
-
 
     <script>
       $(function () {

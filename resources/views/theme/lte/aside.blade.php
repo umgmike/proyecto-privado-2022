@@ -50,11 +50,26 @@
                 <li class="nav-header">MENU</li>
 
                 <li class="nav-item">
-                    <a href="{{ route('page.usuarios') }}" class="nav-link">
-                    <i class="nav-icon fas fa-user"></i>
-                    <p>Usuarios</p>
+                    <a href="" class="nav-link">
+                        <i class="nav-icon fas fa-copy"></i>
+                        <p>Configuraciones <i class="right fas fa-angle-left"></i> </p>
                     </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a href=" {{ route('page.usuarios') }} " class="nav-link">
+                                <i class="nav-icon fas fa-user"></i>
+                                <p> Usuarios </p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href=" {{ route('page.roles') }}  " class="nav-link">
+                                <i class="nav-icon fa fa-solid fa-key"></i>
+                                <p> Roles </p>
+                            </a>
+                        </li>
+                    </ul>
                 </li>
+
 
                 <li class="nav-item">
                     <a href="{{ route('page.Pasajeros') }}" class="nav-link">

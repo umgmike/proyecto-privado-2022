@@ -58,7 +58,7 @@
 
                                             <div class="form-group">
                                                 <label for="id_empresa">Empresa : </label>
-                                                <select id="id_empresa" name="id_empresa" class="form-control">
+                                                <select id="id_empresa" name="id_empresa" class="form-control select2">
                                                 @if (count($empresa))
                                                     @foreach($empresa as $item)
                                                         <option value="{{$item->id}}">{{ $item->empresa }}</option>

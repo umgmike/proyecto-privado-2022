@@ -105,7 +105,7 @@
 
                                 <div class="form-group">
                                     <input type="submit" class="btn btn-warning" value="Actualizar Registro">
-                                    <a href=" {{ route('page.boleto') }} " class="btn btn-danger">Cancelar</a>
+                                    <a href="  " class="btn btn-danger">Cancelar</a>
                                 </div>
 
                             </div>

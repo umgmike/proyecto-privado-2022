@@ -7,6 +7,11 @@ use App\Http\Controllers\Controller;
 
 use App\Models\Avion;
 use App\Models\Empresa;
+use App\Models\Pasajero;
+use App\Models\Pais;
+use App\Models\Departamento;
+use App\Models\Clase;
+use App\Models\Boleto;
 
 use DB;
 use Alert;
@@ -100,19 +105,52 @@ class AvionesController extends Controller
      */
     public function editarRegistro($id)
     {
-        return view('theme.pages.mantenimiento.reservaciones.aviones.crearVuelos');
+        $data['registro'] = Avion::findOrFail($id);
+        $data['listadoAviones'] = Avion::all();
+        $data['listadoPasajero'] = Pasajero::all();
+        $data['listadoClase'] = Clase::all();
+        $data['listadoPais'] = Pais::all();
+        $sql = '
+            SELECT
+                p.id,
+                p.pais
+            FROM pais p
+            WHERE p.id = 8';
+        $pais_destino = DB::select($sql);
+
+        $data['listadoDepartamento'] = Departamento::all();
+        return view('theme.pages.mantenimiento.reservaciones.aviones.crearVuelos', $data, compact('pais_destino'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function updateRegistro(Request $request, $id)
+
+
+
+
+    public function grabarRegistroAviones(Request $request)
     {
-        //
+        DB::beginTransaction();
+        try
+            {
+                $registro = new Boleto();
+                $registro->id_avion =  $request->id_avion;
+                $registro->id_pasajero = $request->id_pasajero;
+                $registro->id_clase = $request->id_clase;
+                $registro->precio = $request->precio;
+                $registro->cantidad = $request->cantidad;
+                $registro->total = $request->total;
+                $registro->id_pais_origen = $request->id_pais_origen;
+                $registro->id_pais_destino = $request->id_pais_destino;
+                $registro->id_ciudad_destino = $request->id_ciudad_destino;
+                $registro->direccion = $request->direccion;
+                $registro->motivo = $request->motivo;
+                $registro->save();
+                DB::commit();
+                toast('Aviones almacenado con éxito','info')->timerProgressBar()->autoClose(4500);
+                return redirect()->action([AvionesController::class, 'getAviones']);
+            } catch (\Exception $e) {
+                DB::rollback();
+                toast('Aviones No se pudo insertar' . $e . ' ','error')->timerProgressBar()->autoClose(4500);
+        }
     }
 
     public function editarRegistroAvion($id)

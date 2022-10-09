@@ -20,5 +20,23 @@ class PasajeroTableSeeder extends Seeder
             'edad' => 40,
             'id_genero' => 1
         ]);
+
+        Pasajero::create([
+            'nombre' => 'Fernanda',
+            'apellido' => 'Morales Benitez',
+            'telefono' => '5692-3055',
+            'dpi' => '4563 82391 0701',
+            'edad' => 45,
+            'id_genero' => 2
+        ]);
+
+        Pasajero::create([
+            'nombre' => 'Luis',
+            'apellido' => 'Fernández Ramírez',
+            'telefono' => '7856-6055',
+            'dpi' => '1655 28596 0701',
+            'edad' => 40,
+            'id_genero' => 1
+        ]);
     }
 }

@@ -58,16 +58,15 @@
                                 </ul>
 
                                 <div class="form-group">
-                                    <a href=" {{ route('page.edit.Aviones', ['id' => $av->id])}} " class="btn btn-sm btn-info tooltipsC" title="Reservar en :  {{ $av->nombre_avion }} "><b>Reservar vuelo</b></a>
-                                    <a href=" {{ route('page.edit.Aviones.temp', ['id' => $av->id])}} " class="btn btn-sm btn-danger tooltipsC" title="Editar Registros de :  {{ $av->nombre_avion }}"><b>Editar</b></a>
                                     @if($av->estado_vuelo == "En Espera")
+                                        <a href=" {{ route('page.edit.Aviones', ['id' => $av->id])}} " class="btn btn-sm btn-info tooltipsC" title="Reservar en :  {{ $av->nombre_avion }} "><b>Reservar vuelo</b></a>
+                                        <a href=" {{ route('page.edit.Aviones.temp', ['id' => $av->id])}} " class="btn btn-sm btn-danger tooltipsC" title="Editar Registros de :  {{ $av->nombre_avion }}"><b>Editar</b></a>
                                         <form action="{{route('page.activar.Aviones', ['id' => $av->id])}}" class="d-inline form-eliminar" method="POST">
-                                        @csrf @method("delete")
-                                        <button type="submit" class="btn btn-sm btn-primary btn-accion-tabla eliminar tooltipsC" title="Avión {{ $av->nombre_avion }} :  {{ $av->estado_vuelo }} ">
-                                            <i class="fa fa-check"></i>
-                                        </button>
+                                            @csrf @method("delete")
+                                            <button type="submit" class="btn btn-sm btn-primary btn-accion-tabla eliminar tooltipsC" title="Avión {{ $av->nombre_avion }} :  {{ $av->estado_vuelo }} ">
+                                                <i class="fa fa-check"></i>
+                                            </button>
                                         </form>
-
                                     @else
                                         <form action="{{route('page.activar.Aviones.espera', ['id' => $av->id])}}" class="d-inline form-eliminar" method="POST">
                                         @csrf @method("delete")

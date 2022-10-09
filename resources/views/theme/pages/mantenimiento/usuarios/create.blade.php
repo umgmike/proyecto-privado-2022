@@ -6,7 +6,6 @@
 
 @section("scripts")
   <script src="{{asset("assets/pages/bloques/bloques.js")}}" type="text/javascript"></script>
-  <script src="{{asset("assets/pages/scripts/admin/index.js")}}" type="text/javascript"></script>
 @endsection
 
 @section('content')
@@ -27,7 +26,7 @@
 
         <div class="col-md-5">
           <div class="container-fluid">
-            <form action="" id="GuardarUsuario" method="POST" autocomplete="off">
+            <form action=" {{ route('page.save.Usuarios') }} " id="GuardarUsuario" method="POST" autocomplete="off">
               @csrf
 
 
@@ -68,7 +67,7 @@
                           <div id="logins-part" class="content active dstepper-block" role="tabpanel" aria-labelledby="logins-part-trigger">
                             <div class="form-group">
                               <label for="exampleInputEmail1">Email address</label>
-                              <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter email">
+                              <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Enter email">
                             </div>
                             <div class="form-group">
                               <label for="exampleInputPassword1">Password</label>

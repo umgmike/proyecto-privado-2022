@@ -78,7 +78,7 @@
 
                             <div class="form-group">
                                 <label for="id_genero">Seleccione género</label>
-                                <select id="id_genero" name="id_genero" name="id_genero" class="form-control">
+                                <select id="id_genero" name="id_genero" name="id_genero" class="form-control select2">
                                     @if (count($listadoGenero))
                                             @foreach($listadoGenero as $item)
                                                 <option

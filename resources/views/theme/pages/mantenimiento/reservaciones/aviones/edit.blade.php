@@ -41,9 +41,9 @@
                         <a href="" class="btn btn-info btn-block "></a>
                         <div class="card-body row">
                             <div class="col-3 text-center d-flex align-items-center justify-content-center">
-                            <div class="image">
-                                <img src=" {{ asset("uza/img/core-img/logoInicial.ico") }} " alt="">
-                            </div>
+                                <div class="image">
+                                    <img src=" {{ asset("uza/img/core-img/logoInicial.ico") }} " alt="">
+                                </div>
                             </div>
 
                             <div class="col-6">
@@ -59,17 +59,17 @@
 
                             <div class="form-group">
                                 <label for="id_empresa">Editar Empresa : </label>
-                                <select id="id_empresa" name="id_empresa" name="id_empresa" class="form-control">
+                                <select id="id_empresa" name="id_empresa" class="form-control select2">
                                     @if (count($listadoEmpresa))
-                                            @foreach($listadoEmpresa as $item)
-                                                <option
-                                                    {{$registro->id_empresa == $item->id ? 'selected': ''}}
-                                                    value="{{$item->id}}">{{$item->empresa}}
-                                                </option>
-                                            @endforeach
-                                            @elseif ($listadoEmpresa != '')
-                                                <option value="">No se encuentró ningún registro</option>
-                                            @endif
+                                        @foreach($listadoEmpresa as $item)
+                                            <option
+                                                {{$registro->id_empresa == $item->id ? 'selected': ''}}
+                                                value="{{$item->id}}">{{$item->empresa}}
+                                            </option>
+                                        @endforeach
+                                    @elseif ($listadoEmpresa != '')
+                                        <option value="">No se encuentró ningún registro</option>
+                                    @endif
                                 </select>
                             </div>
 

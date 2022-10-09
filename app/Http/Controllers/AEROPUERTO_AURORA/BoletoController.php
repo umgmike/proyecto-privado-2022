@@ -33,9 +33,9 @@ class BoletoController extends Controller
         $sql = '
             SELECT
                 b.id,
+                av.nombre_avion,
                 CONCAT(p.nombre, " ", p.apellido) AS nombre_completo,
                 c.clase,
-                b.ticket,
                 b.cantidad,
                 b.precio,
                 b.total,
@@ -50,76 +50,14 @@ class BoletoController extends Controller
             INNER JOIN clase c ON (b.id_clase = c.id)
             INNER JOIN pais pa ON (b.id_pais_origen = pa.id)
             INNER JOIN pais pd ON (b.id_pais_destino = pd.id)
-            INNER JOIN departamento d ON (b.id_ciudad_destino = d.id)';
+            INNER JOIN departamento d ON (b.id_ciudad_destino = d.id)
+            INNER JOIN avion av ON (b.id_avion = av.id)';
 
         $boletos = DB::select($sql);
 
         return view('theme.pages.mantenimiento.reservaciones.boletos.index', compact('boletos'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function crearBoleto()
-    {
-        $clase = Clase::all();
-        $pasajero = Pasajero::all();
-        $rel_ticket = Boleto::all();
-        $pais = Pais::all();
-        $sql = '
-            SELECT
-                p.id,
-                p.pais
-            FROM pais p
-            WHERE p.id = 8';
-        $pais_destino = DB::select($sql);
-
-        $depto = Departamento::all();
-        return view('theme.pages.mantenimiento.reservaciones.boletos.generarBoleto', compact('clase', 'pasajero', 'rel_ticket', 'pais', 'depto', 'pais_destino'));
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function grabarRegistro(Request $request)
-    {
-
-       DB::beginTransaction();
-       try
-       {
-            $registro = new Boleto();
-            $registro->id_pasajero = $request->id_pasajero;
-            $registro->id_clase = $request->id_clase;
-            $registro->ticket = $request->ticket;
-            $registro->cantidad = $request->cantidad;
-            $registro->precio = $request->precio;
-            $registro->total = $request->total;
-            $registro->motivo = $request->motivo;
-            $registro->save();
-            DB::commit();
-            toast('Boleto almacenado con éxito','info')->timerProgressBar()->autoClose(4500);
-            return redirect()->action([BoletoController::class, 'getBoleto']);
-        } catch (\Exception $e) {
-            DB::rollback();
-            toast('Boleto No se pudo insertar' . $e . ' ','error')->timerProgressBar()->autoClose(4500);
-        }
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
 
     /**
      * Show the form for editing the specified resource.
