@@ -1,113 +1,127 @@
 @extends("theme.$theme.layout")
 
 @section('Title')
-  Registro de usuarios
+  Crear registro usuario
 @endsection
 
 @section("scripts")
-  <script src="{{asset("assets/pages/bloques/bloques.js")}}" type="text/javascript"></script>
+  <script src="{{asset("assets/pages/scripts/admin/usuario/create.js")}}" type="text/javascript"></script>
 @endsection
 
 @section('content')
-  <section class="content">
-    <div class="container-fluid">
-      <div class="row">
-        <div class="col-12">
-          <h4>
-            <i class="fa fa-user-graduate"> Creación <strong> @yield('Title') </strong> </i>
-          </h4>
+    <section class="content">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-12">
+                <h4>
+                    <i class="fa fa-users"><strong> @yield('Title') </strong> </i>
+                </h4>
+                </div>
+            </div>
         </div>
-      </div>
-    </div>
-  </section>
+    </section>
 
-  <section class="content">
-    <div class="container-fluid offset-md-3">
+    @include('includes.form-error')
+    @include('includes.mensaje')
 
-        <div class="col-md-5">
-          <div class="container-fluid">
-            <form action=" {{ route('page.save.Usuarios') }} " id="GuardarUsuario" method="POST" autocomplete="off">
-              @csrf
+    <section class="content">
+        <div class="container-fluid">
+            <form action=" {{ route('page.save.Usuarios') }}" id="GuardarUsuarios" method="POST" autocomplete="off">
+                @csrf
+                <div class="row">
+                <div class="col-md-6 offset-md-3">
+                    <div class="row">
+                    <div class="col-12">
+                        <div class="card">
 
-
-
-
-                <div class="card card-default">
-                    <div class="ribbon-wrapper ribbon-sm">
-                        <div class="ribbon bg-info">
-                            Crear
-                        </div>
-                    </div>
-                    <a href="" class="btn btn-info btn-block "></a>
-
-                    <div class="card-header">
-                        <h3 class="card-title">Formulario de usuarios </h3>
-                    </div>
-
-                    <div class="card-body p-0">
-                      <div class="bs-stepper linear">
-                        <div class="bs-stepper-header" role="tablist">
-                          <!-- your steps here -->
-                          <div class="step active" data-target="#logins-part">
-                            <button type="button" class="step-trigger" role="tab" aria-controls="logins-part" id="logins-part-trigger" aria-selected="true">
-                              <span class="bs-stepper-circle">1</span>
-                              <span class="bs-stepper-label">Logins</span>
-                            </button>
-                          </div>
-                          <div class="line"></div>
-                          <div class="step" data-target="#information-part">
-                            <button type="button" class="step-trigger" role="tab" aria-controls="information-part" id="information-part-trigger" aria-selected="false" disabled="disabled">
-                              <span class="bs-stepper-circle">2</span>
-                              <span class="bs-stepper-label">Various information</span>
-                            </button>
-                          </div>
-                        </div>
-                        <div class="bs-stepper-content">
-                          <!-- your steps content here -->
-                          <div id="logins-part" class="content active dstepper-block" role="tabpanel" aria-labelledby="logins-part-trigger">
-                            <div class="form-group">
-                              <label for="exampleInputEmail1">Email address</label>
-                              <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Enter email">
+                        <div class="ribbon-wrapper ribbon-xl">
+                            <div class="ribbon bg-danger">
+                            Crear registro usuarios
                             </div>
-                            <div class="form-group">
-                              <label for="exampleInputPassword1">Password</label>
-                              <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+                        </div>
+                        <a href="" class="btn btn-warning btn-block "></a>
+                        <div class="card-body row">
+                            <div class="col-3 text-center d-flex align-items-center justify-content-center">
+                                <div class="image">
+                                    <img src=" {{ asset("uza/img/core-img/logoInicial.ico") }} " alt="">
+                                </div>
                             </div>
 
-                            <div class="input-group">
-                                <div class="input-group-prepend">
-                                  <span class="input-group-text"><i class="fas fa-phone"></i></span>
-                                </div>
-                                <input type="text" class="form-control" data-inputmask="&quot;mask&quot;: &quot;(999) 999-9999&quot;" data-mask="" inputmode="text">
-                              </div>
+                            <div class="col-6">
 
-                            <button class="btn btn-primary" onclick="stepper.next()">Next</button>
-                          </div>
-                          <div id="information-part" class="content" role="tabpanel" aria-labelledby="information-part-trigger">
-                            <div class="form-group">
-                              <label for="exampleInputFile">File input</label>
-                              <div class="input-group">
-                                <div class="custom-file">
-                                  <input type="file" class="custom-file-input" id="exampleInputFile">
-                                  <label class="custom-file-label" for="exampleInputFile">Choose file</label>
+                                <div class="form-group">
+                                    <label for="id_rol" class="control-label">Seleccione rol</label>
+                                    <div class="input-group input-group-sm">
+                                        <select name="id_rol"  class="form-control select2 tooltipsC"  title="Seleccione rol">
+                                            @if (count($roles))
+                                                @foreach($roles as $item)
+                                                    <option value="{{$item->id}}">{{$item->rol}}</option>
+                                                @endforeach
+                                            @elseif ($roles != '')
+                                                <option value="">No se encuentró ningún registro</option>
+                                            @endif
+                                        </select>
+                                    </div>
                                 </div>
-                                <div class="input-group-append">
-                                  <span class="input-group-text">Upload</span>
+
+                                <div class="form-group" >
+                                    <label for="nombre" class="control-label">Nombre Usuario: </label>
+                                    <input type="text" name="nombre" id="nombre" class="form-control" value="{{old('nombre', $item->nombre ?? '')}}">
                                 </div>
-                              </div>
+
+                                <div class="form-group" >
+                                    <label for="apellido" class="control-label">Apellido Usuario: </label>
+                                    <input type="text" name="apellido" id="apellido" class="form-control" value="{{old('apellido', $item->apellido ?? '')}}">
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="id_genero" class="control-label">Seleccione género</label>
+                                    <div class="input-group input-group-sm">
+                                        <select name="id_genero"  class="form-control select2 tooltipsC"  title="Seleccione rol">
+                                            @if (count($genero))
+                                                @foreach($genero as $item)
+                                                    <option value="{{$item->id}}">{{$item->genero}}</option>
+                                                @endforeach
+                                            @elseif ($genero != '')
+                                                <option value="">No se encuentró ningún registro</option>
+                                            @endif
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <div class="form-group" >
+                                    <label for="telefono" class="control-label">Teléfono Usuario: </label>
+                                    <input type="text" name="telefono" id="telefono" class="form-control" value="{{old('telefono', $item->telefono ?? '')}}" data-inputmask='"mask": "9999-9999"' data-mask placeholder="Ingrese teléfono">
+                                </div>
+
+                                <div class="form-group" >
+                                    <label for="usuario" class="control-label">Usuario: </label>
+                                    <input type="text" name="usuario" id="usuario" class="form-control" value="{{old('usuario', $item->usuario ?? '')}}">
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="password" class="col-form-label {{!isset($item) ? 'required' : ''}}">Contraseña</label>
+                                    <input type="password" name="password" id="password" class="form-control" placeholder="Ingrese contraseña" value="" {{!isset($item) ? 'required' : ''}} minlength="8" value="{{old('password', $item->password ?? '')}}">
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="re_password" class="col-form-label {{!isset($item) ? 'required' : ''}}">Confirme contraseña</label>
+                                    <input type="password" name="re_password" id="re_password" class="form-control" placeholder="Repita contraseña" value="" {{!isset($item) ? 'required' : ''}} minlength="8">
+                                </div>
+
+                                <div class="form-group">
+                                    <input type="submit" class="btn btn-warning" value="Guardar Registro">
+                                    <a href=" {{ route('page.usuarios') }} " class="btn btn-danger">Cancelar</a>
+                                </div>
                             </div>
-                            <button class="btn btn-primary" onclick="stepper.previous()">Previous</button>
-                            <button type="submit" class="btn btn-primary">Submit</button>
-                          </div>
                         </div>
-                      </div>
+                        </div>
                     </div>
-
-                  </div>
-
+                    </div>
+                </div>
+                </div>
             </form>
-          </div>
         </div>
-    </div>
-  </section>
+    </section>
+
 @endsection

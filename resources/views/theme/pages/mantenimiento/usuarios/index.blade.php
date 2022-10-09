@@ -33,8 +33,8 @@
             </div><br>
 
             <div class="card-header">
-                <a href=" {{ route('page.create.usuarios') }} " class="btn btn-info tooltipsC" title="Crear registro del Estudiante">
-                  <i class="fa fa-fw fa-plus-circle"></i> Crear registro del Estudiante
+                <a href=" {{ route('page.create.usuarios') }} " class="btn btn-info tooltipsC" title="Crear registro del usuario">
+                  <i class="fa fa-fw fa-plus-circle"></i> Crear registro del usuario
                 </a>
               </div>
 

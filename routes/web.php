@@ -25,6 +25,7 @@ Route::group(['namespace' => 'AEROPUERTO_AURORA', 'middleware' => 'auth'], funct
 	Route::post('Usuarios/Guardar', 'UsuarioController@grabarRegistro')->name('page.save.Usuarios')->middleware('auth');
 	Route::get('Usuarios/{id}/Editar', 'UsuarioController@editarRegistro')->name('page.edit.Usuarios')->middleware('auth');
 	Route::put('Usuarios/{id}', 'UsuarioController@updateRegistro')->name('page.update.Usuarios')->middleware('auth');
+    Route::put('Usuarios/pass/{id}', 'UsuarioController@updatePass')->name('page-update.users-pass')->middleware('auth');
 	Route::delete('Usuarios/{id}', 'UsuarioController@desactivarUsuarios')->name('page.desactivar.Usuarios')->middleware('auth');
 	/*********					apartado de usuarios    					*********/
 
