@@ -133,30 +133,9 @@
                     </a>
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
-
-                            <a href=" {{ route('page.clases') }} " class="nav-link">
-                                <i class="nav-icon fa fa-solid fa-book"></i>
-                                <p> Cantidad de boletos por mes</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href=" {{ route('page.empresas') }} " class="nav-link">
-                                <i class="nav-icon fa fa-solid fa-book"></i>
-                                <p> Vuelos por fechas </p>
-                            </a>
-                        </li>
-
-                        <li class="nav-item">
-                            <a href=" {{ route('page.empresas') }} " class="nav-link">
+                            <a href=" {{ route('boletosCancelados.name') }} " class="nav-link">
                                 <i class="nav-icon fa fa-solid fa-book"></i>
                                 <p> Cantidad de Boletos cancelados </p>
-                            </a>
-                        </li>
-
-                        <li class="nav-item">
-                            <a href=" {{ route('page.empresas') }} " class="nav-link">
-                                <i class="nav-icon fa fa-solid fa-book"></i>
-                                <p> Ingreso por fechas</p>
                             </a>
                         </li>
 
