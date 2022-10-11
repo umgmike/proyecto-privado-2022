@@ -70,6 +70,20 @@
                                             </div>
 
                                             <div class="form-group">
+                                                <label for="id_categoria">Categoria transporte : </label>
+                                                <select id="id_categoria" name="id_categoria" class="form-control select2">
+                                                @if (count($cat))
+                                                    @foreach($cat as $item)
+                                                        <option value="{{$item->id}}">{{ $item->categoria }}</option>
+                                                    @endforeach
+                                                @elseif ($cat != '')
+                                                    <option value="">No se encuentró ningún registro</option>
+                                                @endif
+                                                </select>
+                                            </div>
+
+
+                                            <div class="form-group">
                                                 <label for="capacidad">Capacidad avión : </label>
                                                 <input type="number" id="capacidad" name="capacidad" class="form-control">
                                             </div>

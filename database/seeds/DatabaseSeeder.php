@@ -20,6 +20,7 @@ class DatabaseSeeder extends Seeder
         $this->call(PaisTableSeeder::class);
         $this->call(DepartamentosTableSeeder::class);
         $this->call(EmpresaTableSeeder::class);
+        $this->call(CategoriaTableSeeder::class);
 
     }
 }

@@ -53,10 +53,10 @@
                                         <b>Capacidad</b> <a class="float-right"><strong id="hola"> {{ $av->capacidad }} </strong></a>
                                     </li>
                                     <li class="list-group-item">
-                                        <b>Estado</b> <a class="float-right"><strong> {{ $av->estado_vuelo }} </strong></a>
+                                        <b>Categoría transporte : </b> <a class="float-right"><strong> {{ $av->categoria }} </strong></a>
                                     </li>
                                     <li class="list-group-item">
-                                        <b>No. Pasajeros </b> <a class="float-right"><strong> </strong></a>
+                                        <b>Estado</b> <a class="float-right"><strong> {{ $av->estado_vuelo }} </strong></a>
                                     </li>
                                 </ul>
 

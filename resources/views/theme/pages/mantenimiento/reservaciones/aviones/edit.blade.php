@@ -74,6 +74,22 @@
                             </div>
 
                             <div class="form-group">
+                                <label for="id_categoria">Editar Empresa : </label>
+                                <select id="id_categoria" name="id_categoria" class="form-control select2">
+                                    @if (count($listadoCategoria))
+                                        @foreach($listadoCategoria as $item)
+                                            <option
+                                                {{$registro->id_categoria == $item->id ? 'selected': ''}}
+                                                value="{{$item->id}}">{{$item->categoria}}
+                                            </option>
+                                        @endforeach
+                                    @elseif ($listadoCategoria != '')
+                                        <option value="">No se encuentró ningún registro</option>
+                                    @endif
+                                </select>
+                            </div>
+
+                            <div class="form-group">
                                 <label for="capacidad">Editar Capacidad : </label>
                                 <input type="text" id="capacidad" name="capacidad" class="form-control" value="{{old('capacidad', $registro->capacidad ?? '')}}"/>
                             </div>

@@ -12,6 +12,7 @@ use App\Models\Pais;
 use App\Models\Departamento;
 use App\Models\Clase;
 use App\Models\Boleto;
+use App\Models\Categoria;
 
 use DB;
 use Alert;
@@ -38,9 +39,11 @@ class AvionesController extends Controller
                 a.nombre_avion,
                 e.empresa,
                 a.capacidad,
-                a.estado_vuelo
+                a.estado_vuelo,
+                cat.categoria
             FROM avion a
-            INNER JOIN empresa e ON (a.id_empresa = e.id)';
+            INNER JOIN empresa e ON (a.id_empresa = e.id)
+            INNER JOIN categoria cat ON (a.id_categoria = cat.id)';
         $aviones = DB::select($sql);
 
         $datos = DB::table('boleto AS b')
@@ -61,7 +64,8 @@ class AvionesController extends Controller
     public function crearAviones()
     {
         $empresa = Empresa::all();
-        return view('theme.pages.mantenimiento.reservaciones.aviones.create', compact('empresa'));
+        $cat = Categoria::all();
+        return view('theme.pages.mantenimiento.reservaciones.aviones.create', compact('empresa', 'cat'));
     }
 
     /**
@@ -80,6 +84,7 @@ class AvionesController extends Controller
             $registro->codigo = $request->codigo;
             $registro->nombre_avion = $request->nombre_avion;
             $registro->id_empresa = $request->id_empresa;
+            $registro->id_categoria = $request->id_categoria;
             $registro->capacidad = $request->capacidad;
             $registro->estado_vuelo = $estado_actual;
             $registro->save();
@@ -165,6 +170,7 @@ class AvionesController extends Controller
     {
         $data['registro'] = Avion::findOrFail($id);
         $data['listadoEmpresa'] = Empresa::all();
+        $data['listadoCategoria'] = Categoria::all();
         return view('theme.pages.mantenimiento.reservaciones.aviones.edit', $data);
     }
 
@@ -176,6 +182,7 @@ class AvionesController extends Controller
             $registro = Avion::findOrFail($id);
             $registro->nombre_avion = $request->nombre_avion;
             $registro->id_empresa = $request->id_empresa;
+            $registro->id_categoria = $request->id_categoria;
             $registro->capacidad = $request->capacidad;
             $registro->save();
             DB::commit();
