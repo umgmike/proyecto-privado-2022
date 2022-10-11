@@ -15,6 +15,8 @@ class CreateAvionTable extends Migration
     {
         Schema::create('avion', function (Blueprint $table) {
             $table->increments('id');
+            $table->unsignedInteger('id_categoria');
+            $table->foreign('id_categoria','fk_avion_categoria')->references('id')->on('categoria');
             $table->string('codigo')->unique();
             $table->string('nombre_avion');
             $table->unsignedInteger('id_empresa');
