@@ -63,12 +63,12 @@
                                     <td>{{ $b->fecha_fin }}</td>
                                     <td>
                                         @if($b->estado == 1)
-                                        <button class="btn btn-info btn-sm tooltipsC" title="Registro Asignado">
-                                            <i class="fa fa-check-circle-o"> Activo </i>
+                                        <button class="btn btn-info btn-sm tooltipsC" title="Registrado">
+                                            <i class="fa fa-check-circle-o"> Registrado </i>
                                         </button>
                                         @elseif($b->estado == 0)
-                                        <button class="btn btn-danger btn-sm  tooltipsC" title="Registro No Asignado">
-                                            <i class="fa fa-times-circle-o"> Inactivo </i>
+                                        <button class="btn btn-danger btn-sm  tooltipsC" title="Boleto Cancelado">
+                                            <i class="fa fa-times-circle-o"> Cancelado </i>
                                         </button>
                                         @endif
                                     </td>
