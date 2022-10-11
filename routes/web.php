@@ -98,7 +98,4 @@ Route::group(['namespace' => 'AEROPUERTO_AURORA', 'middleware' => 'auth'], funct
 	Route::get('Empresas/{id}/Editar', 'EmpresaController@editarRegistro')->name('page.edit.empresas')->middleware('auth');
 	Route::put('Empresas/{id}', 'EmpresaController@updateRegistro')->name('page.update.empresas')->middleware('auth');
 	/*********					apartado de Roles    					*********/
-
-
-    Route::get('Reportes/boletos-cancelados', 'ReportesController@boletosCancelados')->name('boletosCancelados.name')->middleware('auth');
 });

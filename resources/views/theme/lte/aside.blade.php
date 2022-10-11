@@ -125,22 +125,6 @@
                         </li>
                     </ul>
                 </li>
-
-                <li class="nav-item">
-                    <a href="" class="nav-link">
-                        <i class="nav-icon fa fa-solid fa-book"></i>
-                        <p>Reportes <i class="right fas fa-angle-left"></i> </p>
-                    </a>
-                    <ul class="nav nav-treeview">
-                        <li class="nav-item">
-                            <a href=" {{ route('boletosCancelados.name') }} " class="nav-link">
-                                <i class="nav-icon fa fa-solid fa-book"></i>
-                                <p> Cantidad de Boletos cancelados </p>
-                            </a>
-                        </li>
-
-                    </ul>
-                </li>
             @endif
 
         </ul>
