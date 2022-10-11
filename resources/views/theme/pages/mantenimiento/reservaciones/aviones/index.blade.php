@@ -50,10 +50,13 @@
                                         <b>Empresa : </b> <a class="float-right"><strong> {{ $av->empresa }} </strong></a>
                                     </li>
                                     <li class="list-group-item">
-                                        <b>Capacidad</b> <a class="float-right"><strong> {{ $av->capacidad }} </strong></a>
+                                        <b>Capacidad</b> <a class="float-right"><strong id="hola"> {{ $av->capacidad }} </strong></a>
                                     </li>
                                     <li class="list-group-item">
                                         <b>Estado</b> <a class="float-right"><strong> {{ $av->estado_vuelo }} </strong></a>
+                                    </li>
+                                    <li class="list-group-item">
+                                        <b>No. Pasajeros </b> <a class="float-right"><strong> {{ count($datos) }}</strong></a>
                                     </li>
                                 </ul>
 
@@ -87,5 +90,11 @@
             </div>
         </div>
     </section>
-
 @endsection
+
+
+@section('scriptsAdicionales')
+    <script type="text/javascript">
+    </script>
+@endsection
+

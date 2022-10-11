@@ -79,7 +79,7 @@
                                                                     </div>
                                                                 </div>
 
-                                                                <div class="col-7">
+                                                                <div class="col-5">
 
                                                                     <div class="form-group">
                                                                         <label for="id_avion">Avion : </label>
@@ -186,6 +186,16 @@
                                                                     <div class="form-group">
                                                                         <label for="motivo">Motivo vuelo : </label>
                                                                         <textarea name="motivo" id="motivo" class="form-control" rows="3"></textarea>
+                                                                    </div>
+
+                                                                    <div class="form-group">
+                                                                        <label for="fecha_inicio">Fecha Salida : </label>
+                                                                        <input type="date" id="fecha_inicio" name="fecha_inicio" class="form-control">
+                                                                    </div>
+
+                                                                    <div class="form-group">
+                                                                        <label for="fecha_fin">Fecha Salida : </label>
+                                                                        <input type="date" id="fecha_fin" name="fecha_fin" class="form-control">
                                                                     </div>
 
                                                                     <div class="form-group">

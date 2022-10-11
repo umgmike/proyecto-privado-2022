@@ -41,10 +41,16 @@ class AvionesController extends Controller
                 a.estado_vuelo
             FROM avion a
             INNER JOIN empresa e ON (a.id_empresa = e.id)';
-
         $aviones = DB::select($sql);
 
-        return view('theme.pages.mantenimiento.reservaciones.aviones.index', compact('aviones'));
+        $datos = DB::table('boleto AS b')
+            ->select(
+                DB::raw('COUNT(b.id_avion)'),
+                )
+            ->groupBy('b.id_avion')
+            ->get();
+
+        return view('theme.pages.mantenimiento.reservaciones.aviones.index', compact('aviones', 'datos'));
     }
 
     /**
@@ -143,6 +149,8 @@ class AvionesController extends Controller
                 $registro->id_ciudad_destino = $request->id_ciudad_destino;
                 $registro->direccion = $request->direccion;
                 $registro->motivo = $request->motivo;
+                $registro->fecha_inicio = $request->fecha_inicio;
+                $registro->fecha_fin = $request->fecha_fin;
                 $registro->save();
                 DB::commit();
                 toast('Aviones almacenado con éxito','info')->timerProgressBar()->autoClose(4500);

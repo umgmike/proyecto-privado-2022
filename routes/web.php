@@ -81,4 +81,21 @@ Route::group(['namespace' => 'AEROPUERTO_AURORA', 'middleware' => 'auth'], funct
     Route::delete('Aviones/{id}/EE', 'AvionesController@activarAvionesEnEspera')->name('page.activar.Aviones.espera')->middleware('auth');
     Route::post('Aviones/Guardar/Bolotes', 'AvionesController@grabarRegistroAviones')->name('page.save.Aviones.save')->middleware('auth');
 	/*********					apartado de Aviones    					*********/
+
+    /*********					apartado de Clases    					*********/
+	Route::get('Clases', 'ClaseController@getClases')->name('page.clases')->middleware('auth');
+    Route::get('Clases/Crear', 'ClaseController@crearClases')->name('page.create.clases')->middleware('auth');
+	Route::post('Clases/Guardar', 'ClaseController@grabarRegistro')->name('page.save.clases')->middleware('auth');
+	Route::get('Clases/{id}/Editar', 'ClaseController@editarRegistro')->name('page.edit.clases')->middleware('auth');
+	Route::put('Clases/{id}', 'ClaseController@updateRegistro')->name('page.update.clases')->middleware('auth');
+	/*********					apartado de Roles    					*********/
+
+
+    /*********					apartado de empresas    					*********/
+	Route::get('Empresas', 'EmpresaController@getEmpresas')->name('page.empresas')->middleware('auth');
+    Route::get('Empresas/Crear', 'EmpresaController@crearEmpresas')->name('page.create.empresas')->middleware('auth');
+	Route::post('Empresas/Guardar', 'EmpresaController@grabarRegistro')->name('page.save.empresas')->middleware('auth');
+	Route::get('Empresas/{id}/Editar', 'EmpresaController@editarRegistro')->name('page.edit.empresas')->middleware('auth');
+	Route::put('Empresas/{id}', 'EmpresaController@updateRegistro')->name('page.update.empresas')->middleware('auth');
+	/*********					apartado de Roles    					*********/
 });

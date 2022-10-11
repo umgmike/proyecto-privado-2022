@@ -101,6 +101,30 @@
                         </li>
                     </ul>
                 </li>
+
+                <li class="nav-header">OTROS</li>
+
+                <li class="nav-item">
+                    <a href="" class="nav-link">
+                        <i class="nav-icon fa fa-solid fa-school"></i>
+                        <p>Mantenimientos <i class="right fas fa-angle-left"></i> </p>
+                    </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+
+                            <a href=" {{ route('page.clases') }} " class="nav-link">
+                                <i class="nav-icon fa fa-closed-captioning"></i>
+                                <p> Clases de vuelos </p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href=" {{ route('page.empresas') }} " class="nav-link">
+                                <i class="nav-icon fa fa-solid fa-closed-captioning"></i>
+                                <p> Empresas de aerolineas </p>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
             @endif
 
         </ul>

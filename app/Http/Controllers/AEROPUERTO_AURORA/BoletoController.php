@@ -44,7 +44,9 @@ class BoletoController extends Controller
                 pa.pais AS pais_origen,
                 pd.pais AS pais_destino,
                 d.nombre,
-                b.direccion
+                b.direccion,
+                DATE_FORMAT(b.fecha_inicio,"%d %M %Y") AS fecha_inicio,
+                DATE_FORMAT(b.fecha_fin,"%d %M %Y") AS fecha_fin
             FROM boleto b
             INNER JOIN pasajero p ON (b.id_pasajero = p.id)
             INNER JOIN clase c ON (b.id_clase = c.id)
