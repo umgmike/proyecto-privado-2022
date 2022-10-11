@@ -127,12 +127,12 @@
 			        <tr>
 			            <td>{{$item->nombre_avion}}</td>
                         <td>{{$item->nombre}} {{$item->apellido}}</td>
-                        @if ($item->estado === 0)
-                            <td> Boleto Cancelado </td>
-                        @endif
                         <td>{{ $item->clase }} </td>
                         <td>{{ $item->origen }} </td>
                         <td>{{ $item->destino }} </td>
+                        @if ($item->estado === 0)
+                            <td> Boleto Cancelado </td>
+                        @endif
 			        </tr>
 			    @endforeach
 		  	</tbody>
