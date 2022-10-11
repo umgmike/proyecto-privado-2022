@@ -38,6 +38,7 @@
                             <tr>
                                 <th>Avion</th>
                                 <th>Pasajero</th>
+                                <th>Cantidad Boletos</th>
                                 <th>Clase</th>
                                 <th>Pais Origen</th>
                                 <th>País Destino</th>
@@ -54,6 +55,7 @@
                                 <tr>
                                     <td>{{ $b->nombre_avion}}</td>
                                     <td>{{ $b->nombre_completo}}</td>
+                                    <td>{{ $b->cantidad}}</td>
                                     <td>{{ $b->clase }}</td>
                                     <td>{{ $b->pais_origen }}</td>
                                     <td>{{ $b->pais_destino }}</td>
