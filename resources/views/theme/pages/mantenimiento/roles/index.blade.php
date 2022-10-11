@@ -93,8 +93,8 @@
                                     </form>
                                 @endif
                             @else
-                                <button class="btn btn-danger btn-sm  tooltipsC" title="Sin Acción">
-                                    <i class="fa fa-times-circle-o"> Sin Acciones </i>
+                                <button class="btn btn-outline-danger btn-sm  tooltipsC" title="Sin Acción">
+                                    <i class="fa fa-times-circle-o"> Sin privilegios </i>
                                 </button>
                             @endif
                         </td>

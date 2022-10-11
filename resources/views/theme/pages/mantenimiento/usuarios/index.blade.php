@@ -32,11 +32,13 @@
               </div>
             </div><br>
 
-            <div class="card-header">
-                <a href=" {{ route('page.create.usuarios') }} " class="btn btn-info tooltipsC" title="Crear registro del usuario">
-                  <i class="fa fa-fw fa-plus-circle"></i> Crear registro del usuario
-                </a>
-              </div>
+            @if ((Auth::user()->id_rol == 1) && (Auth::user()->condicion == 1))
+                <div class="card-header">
+                    <a href=" {{ route('page.create.usuarios') }} " class="btn btn-info tooltipsC" title="Crear registro del usuario">
+                    <i class="fa fa-fw fa-plus-circle"></i> Crear registro del usuario
+                    </a>
+                </div>
+            @endif
 
             <div class="card-body">
               <table id="example1" class="table table-bordered table-striped">
@@ -72,29 +74,34 @@
                         </td>
 
                       <td>
-                        @if($u->estado == 1)
-                          <a href="{{ route('page.edit.Usuarios', ['id' => $u->id])}}"´class=" tooltipsC" title="Editar registro">
-                            <i class="fa fa-edit btn btn-outline-info btn-xs"></i>
-                          </a>
-                        @endif
+                        @if ((Auth::user()->id_rol == 1) && (Auth::user()->condicion == 1))
+                            @if($u->estado == 1)
+                            <a href="{{ route('page.edit.Usuarios', ['id' => $u->id])}}"´class=" tooltipsC" title="Editar registro">
+                                <i class="fa fa-edit btn btn-outline-info btn-xs"></i>
+                            </a>
+                            @endif
 
-                        @if($u->estado == 1)
-                          <form action="{{route('page.desactivar.Usuarios', ['id' => $u->id])}}" class="d-inline form-eliminar" method="POST">
-                            @csrf @method("delete")
-                            <button type="submit" class="btn btn-outline-danger btn-xs btn-accion-tabla eliminar tooltipsC" title="Desactivar registro">
-                                <i class="fa fa-trash"></i>
-                            </button>
-                          </form>
+                            @if($u->estado == 1)
+                            <form action="{{route('page.desactivar.Usuarios', ['id' => $u->id])}}" class="d-inline form-eliminar" method="POST">
+                                @csrf @method("delete")
+                                <button type="submit" class="btn btn-outline-danger btn-xs btn-accion-tabla eliminar tooltipsC" title="Desactivar registro">
+                                    <i class="fa fa-trash"></i>
+                                </button>
+                            </form>
 
+                            @else
+                            <form action="{{route('page.desactivar.Usuarios', ['id' => $u->id])}}" class="d-inline form-eliminar" method="POST">
+                                @csrf @method("delete")
+                                <button type="submit" class="btn btn-outline-success btn-xs btn-accion-tabla eliminar tooltipsC" title="Activar registro">
+                                <i class="fa fa-recycle"></i>
+                                </button>
+                            </form>
+                            @endif
                         @else
-                          <form action="{{route('page.desactivar.Usuarios', ['id' => $u->id])}}" class="d-inline form-eliminar" method="POST">
-                            @csrf @method("delete")
-                            <button type="submit" class="btn btn-outline-success btn-xs btn-accion-tabla eliminar tooltipsC" title="Activar registro">
-                              <i class="fa fa-recycle"></i>
-                             </button>
-                           </form>
+                            <button class="btn btn-outline-danger btn-sm  tooltipsC" title="Sin Acción">
+                                <i class="fa fa-times-circle-o"> Sin privilegios </i>
+                            </button>
                         @endif
-
                       </td>
                     </tr>
                   @endforeach
