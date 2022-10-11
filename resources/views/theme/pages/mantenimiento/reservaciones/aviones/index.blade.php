@@ -56,7 +56,7 @@
                                         <b>Estado</b> <a class="float-right"><strong> {{ $av->estado_vuelo }} </strong></a>
                                     </li>
                                     <li class="list-group-item">
-                                        <b>No. Pasajeros </b> <a class="float-right"><strong> {{ count($datos) }}</strong></a>
+                                        <b>No. Pasajeros </b> <a class="float-right"><strong> </strong></a>
                                     </li>
                                 </ul>
 
