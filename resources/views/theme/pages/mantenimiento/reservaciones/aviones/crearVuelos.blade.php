@@ -194,7 +194,7 @@
                                                                     </div>
 
                                                                     <div class="form-group">
-                                                                        <label for="fecha_fin">Fecha Salida : </label>
+                                                                        <label for="fecha_fin">Fecha llegada : </label>
                                                                         <input type="date" id="fecha_fin" name="fecha_fin" class="form-control">
                                                                     </div>
 
