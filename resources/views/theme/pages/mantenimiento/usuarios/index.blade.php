@@ -32,7 +32,7 @@
               </div>
             </div><br>
 
-            @if ((Auth::user()->id_rol == 1) && (Auth::user()->condicion == 1))
+            @if ((Auth::user()->id_rol === 1) && (Auth::user()->estado === 1))
                 <div class="card-header">
                     <a href=" {{ route('page.create.usuarios') }} " class="btn btn-info tooltipsC" title="Crear registro del usuario">
                     <i class="fa fa-fw fa-plus-circle"></i> Crear registro del usuario
@@ -74,7 +74,7 @@
                         </td>
 
                       <td>
-                        @if ((Auth::user()->id_rol == 1) && (Auth::user()->condicion == 1))
+                        @if ((Auth::user()->id_rol === 1) && (Auth::user()->estado === 1))
                             @if($u->estado == 1)
                             <a href="{{ route('page.edit.Usuarios', ['id' => $u->id])}}"´class=" tooltipsC" title="Editar registro">
                                 <i class="fa fa-edit btn btn-outline-info btn-xs"></i>

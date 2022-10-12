@@ -58,6 +58,7 @@
                                     <li class="list-group-item">
                                         <b>Estado</b> <a class="float-right"><strong> {{ $av->estado_vuelo }} </strong></a>
                                     </li>
+
                                 </ul>
 
                                 <div class="form-group">
@@ -81,17 +82,13 @@
                                 </div>
                             </div>
                         </div>
-
                     </div>
                     @endforeach
-
-
                 </div>
             </div>
         </div>
     </section>
 @endsection
-
 
 @section('scriptsAdicionales')
     <script type="text/javascript">

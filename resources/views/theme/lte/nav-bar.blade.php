@@ -7,15 +7,23 @@
     </ul>
 
     <ul class="navbar-nav ml-auto">
-      <li class="nav-item dropdown">
-        <a class="nav-link" data-toggle="dropdown" href="#">
-          @if (Auth::user()->id_genero == 2)
-            Bienvenida :  <strong> {{ Auth::user()->nombre }} {{ Auth::user()->apellido }}</strong>
-          @else
-            Bienvenido :  <strong> {{ Auth::user()->nombre }} {{ Auth::user()->apellido }}</strong>
-          @endif
-        </a>
-      </li>
+        <li class="nav-item dropdown">
+            <a class="nav-link" data-toggle="dropdown" href="#">
+            @if (Auth::user()->id_genero == 2)
+                Bienvenida :  <strong> {{ Auth::user()->nombre }} {{ Auth::user()->apellido }}</strong>
+            @else
+                Bienvenido :  <strong> {{ Auth::user()->nombre }} {{ Auth::user()->apellido }}</strong>
+            @endif
+            </a>
+        </li>
+
+        <li class="nav-item dropdown">
+            @if (Auth::user()->id_rol === 1 )
+                <a class="nav-link" data-toggle="dropdown">Rol : <strong> Administrador </strong></a>
+            @else
+                <a class="nav-link" data-toggle="dropdown">Rol : <strong> Empleado </strong></a>
+            @endif
+        </li>
 
       @guest
         <li class="nav-item">

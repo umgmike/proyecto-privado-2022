@@ -81,21 +81,23 @@
                                             </a>
                                         @endif
 
-                                        @if($b->estado == 1)
-                                            <form action=" {{route('page.desactivar.boleto', ['id' => $b->id])}} " class="d-inline form-eliminar" method="POST">
-                                            @csrf @method("delete")
-                                            <button type="submit" class="btn btn-outline-danger btn-xs btn-accion-tabla eliminar tooltipsC" title="Desactivar registro">
-                                                <i class="fa fa-trash"></i>
-                                            </button>
-                                            </form>
-
-                                        @else
-                                            <form action=" {{route('page.desactivar.boleto', ['id' => $b->id])}} " class="d-inline form-eliminar" method="POST">
-                                            @csrf @method("delete")
-                                            <button type="submit" class="btn btn-outline-success btn-xs btn-accion-tabla eliminar tooltipsC" title="Activar registro">
-                                                <i class="fa fa-recycle"></i>
+                                        @if ((Auth::user()->id_rol === 1) && (Auth::user()->estado === 1))
+                                            @if($b->estado == 1)
+                                                <form action=" {{route('page.desactivar.boleto', ['id' => $b->id])}} " class="d-inline form-eliminar" method="POST">
+                                                @csrf @method("delete")
+                                                <button type="submit" class="btn btn-outline-danger btn-xs btn-accion-tabla eliminar tooltipsC" title="Desactivar registro">
+                                                    <i class="fa fa-trash"></i>
                                                 </button>
-                                            </form>
+                                                </form>
+
+                                            @else
+                                                <form action=" {{route('page.desactivar.boleto', ['id' => $b->id])}} " class="d-inline form-eliminar" method="POST">
+                                                @csrf @method("delete")
+                                                <button type="submit" class="btn btn-outline-success btn-xs btn-accion-tabla eliminar tooltipsC" title="Activar registro">
+                                                    <i class="fa fa-recycle"></i>
+                                                    </button>
+                                                </form>
+                                            @endif
                                         @endif
                                     </td>
                                 </tr>

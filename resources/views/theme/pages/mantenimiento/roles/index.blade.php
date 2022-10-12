@@ -32,7 +32,7 @@
               </div>
             </div><br>
 
-            @if ((Auth::user()->id_rol == 1) && (Auth::user()->condicion == 1))
+            @if ((Auth::user()->id_rol === 1) && (Auth::user()->estado === 1))
                 <div class="card-header">
                     <a href=" {{ route('page.create.roles') }} " class="btn btn-info tooltipsC" title="Crear registro del @yield('Title')">
                         <i class="fa fa-fw fa-plus-circle"></i> Crear registro del @yield('Title')
@@ -69,7 +69,7 @@
                         <td>{{ $rs->created_at }}</td>
                         <td>{{ $rs->updated_at }}</td>
                         <td>
-                            @if ((Auth::user()->id_rol == 1) && (Auth::user()->condicion == 1))
+                            @if ((Auth::user()->id_rol === 1) && (Auth::user()->estado === 1))
                                 @if($rs->estado == 1)
                                     <a href="{{ route('page.edit.roles', ['id' => $rs->id])}}"´class=" tooltipsC" title="Editar registro">
                                     <i class="fa fa-edit btn btn-outline-info btn-xs"></i>

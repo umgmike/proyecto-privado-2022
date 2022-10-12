@@ -39,7 +39,6 @@
       <nav class="mt-2">
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
 
-            @if ((Auth::user()->id_rol) === 1)
                 <li class="nav-item">
                     <a href="{{ route('home') }}" class="nav-link">
                     <i class="nav-icon fas fa-tachometer-alt"></i>
@@ -125,7 +124,6 @@
                         </li>
                     </ul>
                 </li>
-            @endif
 
         </ul>
       </nav>

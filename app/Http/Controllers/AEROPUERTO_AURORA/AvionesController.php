@@ -46,14 +46,7 @@ class AvionesController extends Controller
             INNER JOIN categoria cat ON (a.id_categoria = cat.id)';
         $aviones = DB::select($sql);
 
-        $datos = DB::table('boleto AS b')
-            ->select(
-                DB::raw('COUNT(b.id_avion)'),
-                )
-            ->groupBy('b.id_avion')
-            ->get();
-
-        return view('theme.pages.mantenimiento.reservaciones.aviones.index', compact('aviones', 'datos'));
+        return view('theme.pages.mantenimiento.reservaciones.aviones.index', compact('aviones'));
     }
 
     /**
