@@ -23,8 +23,8 @@ class CreateEntradasTable extends Migration
             $table->date('fecha_entrada');
             $table->unsignedInteger('id_usuario_registra');
             $table->foreign('id_usuario_registra','fk_usuario_avion')->references('id')->on('usuario');
-            $table->unsignedInteger('id_aerolinea_registra');
-            $table->foreign('id_aerolinea_registra','fk_aerolinea_avion')->references('id')->on('aerolinea');
+            $table->unsignedInteger('id_aerolinea');
+            $table->foreign('id_aerolinea','fk_aerolinea_entradas')->references('id')->on('aerolinea');
             $table->timestamps();
         });
     }
